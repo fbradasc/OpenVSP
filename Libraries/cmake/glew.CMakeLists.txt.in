@@ -18,7 +18,10 @@ elseif(WIN32)
 else()
   # any platform_libs required on Linux or other platforms?
   find_package(OpenGL REQUIRED)
-  set(platform_libs ${OPENGL_LIBRARIES})
+  find_package(X11 REQUIRED)
+  message("----------------------------------------------------- OPENGL: ${OPENGL_LIBRARIES}")
+  message("----------------------------------------------------- X11   : ${X11_LIBRARIES}")
+  set(platform_libs ${OPENGL_LIBRARIES} ${X11_LIBRARIES})
 endif()
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
